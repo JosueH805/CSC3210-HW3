@@ -1,0 +1,121 @@
+.game {
+  width: 600px;
+  height: 225px;
+  border: 1px solid black;
+  margin: auto;
+  position: relative; /* Anchors all absolute elements inside this box */
+  overflow: hidden;   /* Prevents the cactus from showing outside the box */
+}
+
+#dino {
+  width: 50px;
+  height: 50px;
+  background-image: url("img/trex.png");
+  background-size: 50px 50px;
+  position: absolute; /* Changed from relative to absolute */
+  top: 150px;
+  left: 20px;
+}
+
+#dino.duck {
+  height: 25px;
+  top: 175px; /* Keeps dino's feet glued to the same ground level (225px total - 25px height = 200px bottom offset) */
+  background-size: 50px 25px;
+}
+
+.jump {
+  animation: jump 0.3s linear;
+}
+
+@keyframes jump {
+  0% {
+    top: 150px;
+  }
+
+  30% {
+    top: 130px;
+  }
+
+  50% {
+    top: 80px;
+  }
+
+  80% {
+    top: 130px;
+  }
+
+  100% {
+    top: 150px;
+  }
+}
+
+#cactus {
+  width: 20px;
+  height: 40px;
+  position: absolute; 
+  top: 160px; 
+  left: 580px;
+
+  background-image: url("img/cactus.png");
+  background-size: 20px 40px;
+
+  animation: block 1s infinite linear;
+}
+
+@keyframes block {
+  0% {
+    left: 580px;
+  }
+
+  100% {
+    left: -20px;
+  }
+}
+
+#bird {
+  width: 25px;      /* Adjust width to fit your bird image dimensions */
+  height: 30px;     /* Adjust height to fit your bird image dimensions */
+  position: absolute;
+  top: 135px;       /* Flies at head height */
+  left: 580px;
+
+  background-image: url("img/_qbQKf.png");
+  background-size: 40px 30px;
+  background-repeat: no-repeat;
+
+  animation: birdFly 2.5s infinite linear;
+}
+
+@keyframes birdFly {
+  0% {
+    left: 580px;
+  }
+  100% {
+    left: -35px;
+  }
+}
+.game {
+  transition: background-color 0.5s ease;
+}
+
+/* Night Mode Theme Styling */
+.game.night {
+  background-color: #121212;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+/* In night mode, invert the sprite graphics so dark dinosaurs/cacti/birds become white/visible */
+.game.night #dino,
+.game.night #cactus,
+.game.night #bird {
+  filter: invert(1);
+}
+
+.score-board {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-family: monospace;
+  font-weight: bold;
+}
